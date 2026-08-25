@@ -10,3 +10,4 @@ basecamp3)
     fi
     expectedTeamID="2WNYUYRS7G"
     appName="Basecamp.app"
+    ;;
