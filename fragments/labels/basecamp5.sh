@@ -11,3 +11,4 @@ basecamp5)
     blockingProcesses=(
         "Basecamp"
     )
+    ;;
