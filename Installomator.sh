@@ -30,7 +30,7 @@ export PATH=/usr/bin:/bin:/usr/sbin:/sbin
 # also no actual installation will be performed
 # debug mode 1 will download to the directory the script is run in, but will not check the version
 # debug mode 2 will download to the temp directory, check for blocking processes, check the version, but will not install anything or remove the current version
-DEBUG=0
+DEBUG=1
 
 # notify behavior
 NOTIFY=success
@@ -1604,13 +1604,13 @@ valuesfromarguments)
 8x8)
     name="8x8 Work"
     type="dmg"
+    pageContent=$(curl -fsL "https://help.8x8.com/docs/download-8x8-work-for-desktop" | sed 's/&quot;/"/g')
     if [[ $(arch) == "arm64" ]]; then
-        downloadURL=$(curl -fs -L 'https://support-portal.8x8.com/helpcenter/viewArticle.html?d=8bff4970-6fbf-4daf-842d-8ae9b533153d' | grep -o "https.*arm64-dmg-v[0-9.-]*.dmg" | head -n 1 | sed 's/\"//' | awk '{print $1}')
+        downloadURL=$(echo "$pageContent" | grep -o 'https://work-desktop-assets\.8x8\.com/prod-publish/ga/work-arm64-dmg-v[0-9][0-9.-]*\.dmg' | sort -Vr | head -n 1)
     else
-        downloadURL=$(curl -fs -L 'https://support-portal.8x8.com/helpcenter/viewArticle.html?d=8bff4970-6fbf-4daf-842d-8ae9b533153d' | grep -m 1 -o "https.*dmg" | sed 's/\"//' | awk '{print $1}')
+        downloadURL=$(echo "$pageContent" | grep -o 'https://work-desktop-assets\.8x8\.com/prod-publish/ga/work-dmg-v[0-9][0-9.-]*\.dmg' | sort -Vr | head -n 1)
     fi
-    # Check newer version than 7.2.4
-    appNewVersion=$(curl -fs -L 'https://support-portal.8x8.com/helpcenter/viewArticle.html?d=8bff4970-6fbf-4daf-842d-8ae9b533153d' | grep -m 1 -o "https.*dmg" | sed 's/\"//' | awk '{print $1}' | sed -E 's/.*-v([0-9\.]*)[-\.]*.*/\1/' )
+    appNewVersion=$(echo "$downloadURL" | sed -E 's/.*-v([0-9]+\.[0-9]+\.[0-9]+)-.*/\1/')
     expectedTeamID="FC967L3QRG"
     ;;
 abetterfinderattributes7)
@@ -2192,6 +2192,17 @@ androidstudio)
         echo $result
     }
     ;;
+ankerwork)
+	name="AnkerWork"
+	type="dmg"
+	if [[ "$(arch)" == "arm64" ]]; then
+		downloadURL="https://ankerwork.s3.us-west-2.amazonaws.com/electron/AnkerWork-Setup-arm64.dmg"
+	else
+		downloadURL="https://ankerwork.s3.us-west-2.amazonaws.com/electron/AnkerWork-Setup-x64.dmg"
+	fi
+	appNewVersion=$(curl -fsL "https://us.ankerwork.com/pages/download-software" | tr -d '\n' | grep -oE 'For Mac 10\.14 and above.*Headset Version' | grep -oE 'V[0-9]+\.[0-9]+\.[0-9]+' | head -1 | sed 's/^V//')
+	expectedTeamID="BVL93LPC7F"
+	;;
 anki)
     name="Anki"
     type="dmg"
@@ -2985,7 +2996,7 @@ bruno)
     fi
     downloadURL="$(downloadURLFromGit usebruno bruno)"
     appNewVersion="$(versionFromGit usebruno bruno)"
-    expectedTeamID="P3WTZH48ZB"
+    expectedTeamID="W7LPPWA48L"
     ;;
 bugdom)
     name="Bugdom"
@@ -4008,6 +4019,13 @@ cricutdesignspace)
     expectedTeamID="25627ZFVT7"
     ;;
 
+crisp)
+	name="Crisp"
+	type="dmg"
+	downloadURL="$(downloadURLFromGit didriksg Crisp)"
+	appNewVersion="$(versionFromGit didriksg Crisp)"
+	expectedTeamID="HQHWD6JXX7"
+	;;
 cryptomator)
     name="Cryptomator"
     type="dmg"
@@ -4230,9 +4248,9 @@ windsurf)
     name="Devin"
     type="dmg"
     if [[ "$(arch)" == "arm64" ]]; then
-        downloadURL="$(curl -fsL "https://docs.devin.ai/desktop/releases" | grep -Eo 'https://[^"\]*-darwin-arm64-[0-9.]+\.dmg' | head -n 1)"
+        downloadURL="$(curl -fsL "https://docs.devin.ai/desktop/releases" | grep -Eo 'https://[^"`\]*-darwin-arm64-[0-9.]+\.dmg' | head -n 1)"
     else
-        downloadURL="$(curl -fsL "https://docs.devin.ai/desktop/releases" | grep -Eo 'https://[^"\]*-darwin-x64-[0-9.]+\.dmg' | head -n 1)"
+        downloadURL="$(curl -fsL "https://docs.devin.ai/desktop/releases" | grep -Eo 'https://[^"`\]*-darwin-x64-[0-9.]+\.dmg' | head -n 1)"
     fi
     appNewVersion="$(basename "$downloadURL" .dmg | awk -F- '{print $NF}')"
     expectedTeamID="83Z2LHX6XW"
@@ -4244,6 +4262,13 @@ devonthink)
     appNewVersion=$(echo "$devonPlist" | plutil -extract "DEVONthink" raw -o - -)
     downloadURL="https://download.devontechnologies.com/download/devonthink/${appNewVersion}/DEVONthink.dmg.zip"
     expectedTeamID="679S2QUWR8"
+    ;;
+dfublasterpro)
+    name="DFU Blaster Pro"
+    type="pkgInDmg"
+    downloadURL="https://twocanoes-software-updates.s3.amazonaws.com/DFU_Blaster_Pro.dmg"
+    appNewVersion=$( getJSONValue "$(curl -fsL https://data.twocanoes.com/api/version_info)" "[\"com.twocanoes.DFU-Blaster-Pro\"].version" )
+    expectedTeamID="UXP6YEHSPW"
     ;;
 dia)
     name="Dia"
@@ -4306,10 +4331,10 @@ discordcanary)
 diskdrill)
     name="Disk Drill"
     type="dmg"
-    appname="Disk Drill.app"
     downloadURL="https://dl.cleverfiles.com/diskdrill.dmg"
     appNewVersion=$( curl -fsL "https://www.cleverfiles.com/releases/auto-update/dd5-newestr.xml" | xpath 'string(//rss/channel/item/enclosure/@sparkle:version)' 2>/dev/null)
-    expectedTeamID="A3W62KZY8Z"
+    versionKey="CFBundleVersion"
+    expectedTeamID="Z6C22PNU8R"
     ;;
 diskspace)
     name="diskspace"
@@ -5603,6 +5628,13 @@ gitkraken)
     fi
     expectedTeamID="T7QVVUTZQ8"
     ;;
+glean)
+    name="Glean"
+    type="dmg"
+    appNewVersion=$(curl -sL "https://storage.googleapis.com/glean-downloads/glean-desktop-app/latest-mac.yml" | grep "^version:" | sed 's/^version:[[:space:]]*\([0-9.]*\).*/\1/')
+    downloadURL="https://storage.googleapis.com/glean-downloads/glean-desktop-app/Glean-${appNewVersion}-universal.dmg"
+    expectedTeamID="877XN49FUQ"
+    ;;
 globusconnectpersonal)
     name="Globus Connect Personal"
     type="dmg"
@@ -5958,6 +5990,13 @@ harmonysase)
     appNewVersion="$(curl -fsIL "${downloadURL}" | grep -i ^x-amz-meta-version | sed -E 's/x-amz-meta-version: //' | cut -d"." -f1-3)"
     expectedTeamID="924635PD62"
     ;;
+harper)
+    name="Harper"
+    type="dmg"
+    downloadURL="https://writewithharper.com/desktop/download"
+    appNewVersion=$(curl -fsL "https://api.github.com/repos/elijah-potter/harper/releases/latest" | grep '"tag_name"' | sed -E 's/.*"v([0-9.]+)".*/\1/')
+    expectedTeamID="PZYM8XX95Q"
+    ;;
 hazel)
     # credit: Søren Theilgaard (@theilgaard)
     name="Hazel"
@@ -5965,6 +6004,13 @@ hazel)
     downloadURL=$(curl -fsI https://www.noodlesoft.com/Products/Hazel/download | grep -i "^location" | awk '{print $2}' | tr -d '\r\n')
     appNewVersion=$(curl -fsI https://www.noodlesoft.com/Products/Hazel/download | grep -i "^location" | awk '{print $2}' | sed -E 's/.*\/[a-zA-Z]*-([0-9.]*)\..*/\1/g')
     expectedTeamID="86Z3GCJ4MF"
+    ;;
+heidiscribe)
+    name="Heidi"
+    appName="Heidi.app"
+    type="dmg"
+    downloadURL="https://cdn.crabnebula.app/download/heidi-scribe/scribe/latest/platform/dmg-aarch64"
+    expectedTeamID="2A7SXV3WJH"
     ;;
 hexfiend)
     name="Hex Fiend"
@@ -7277,7 +7323,7 @@ logseq)
         downloadURL=$(downloadURLFromGit logseq logseq)
     fi
     appNewVersion=$(versionFromGit logseq logseq)
-    expectedTeamID="3K44EUN829"
+    expectedTeamID="K378MFWK59"
     ;;
 loom)
     name="Loom"
@@ -8689,6 +8735,18 @@ nextcloudtalk)
     appNewVersion="$(curl -fsIL ${downloadURL} | grep -i ^location | grep -oE '/v[0-9]+\.[0-9]+\.[0-9]+/' | cut -d '/' -f2 | sed 's/^v//')"
     expectedTeamID="NKUJUXUJ3B"
     ;;
+nexusshell)
+    name="Nexus Shell"
+    type="dmg"
+    if [[ $(arch) == "arm64" ]]; then
+        downloadURL=$(downloadURLFromGit viewer12 Nexus-Shell-Releases)
+        appNewVersion=$(versionFromGit viewer12 Nexus-Shell-Releases)
+    else
+        printlog "Nexus Shell is only compatible with Apple Silicon (arm64) Macs." ERROR
+        cleanupAndExit 95 "Nexus Shell requires Apple Silicon" ERROR
+    fi
+    expectedTeamID="5MBFAB57U2"
+    ;;
 nodejs)
     name="nodejs"
     type="pkg"
@@ -8786,20 +8844,21 @@ npssantafull)
     expectedTeamID="ZMCG7MLDV9"
     ;;
 nudge)
-    name="Nudge"
+    name="Nudge App"
     type="pkg"
     archiveName="Nudge-[0-9.]*.pkg"
+    packageID="com.github.macadmins.Nudge"
     downloadURL=$(downloadURLFromGit macadmins Nudge )
     appNewVersion=$(versionFromGit macadmins Nudge )
     expectedTeamID="T4SK8ZXCXG"
     ;;
 nudgesuite)
     name="Nudge Suite"
-    appName="Nudge.app"
     type="pkg"
     archiveName="Nudge_Suite-[0-9.]*.pkg"
-    appNewVersion=$(versionFromGit macadmins Nudge )
+    packageID="com.github.macadmins.Nudge.Suite"
     downloadURL=$(downloadURLFromGit macadmins Nudge )
+    appNewVersion=$(versionFromGit macadmins Nudge )
     expectedTeamID="T4SK8ZXCXG"
     blockingProcesses=( "Nudge" )
     ;;
@@ -9445,7 +9504,7 @@ polylens)
     polyDetails="$(curl -fs 'https://api.silica-prod01.io.lens.poly.com/graphql' -X POST -H 'Content-Type: application/json' --data-raw '{"operationName":"LensSoftwareUpdateAvailable","variables":{"productId":"lens-desktop-mac","releaseChannel":null},"query":"query LensSoftwareUpdateAvailable($productId: ID!, $releaseChannel: String) {availableProductSoftwareByPid(pid: $productId, releaseChannel: $releaseChannel) {version productBuild {build archiveUrl __typename} __typename}}"}')"
     appNewVersion=$(getJSONValue "$polyDetails" "data.availableProductSoftwareByPid.version")
     downloadURL=$(getJSONValue "$polyDetails" "data.availableProductSoftwareByPid.productBuild.archiveUrl")
-    expectedTeamID="WJCM3F7AQ4"
+    expectedTeamID="6HB5Y2QTA3"
     ;;
 popsql)
      name="PopSQL"
@@ -10282,7 +10341,13 @@ sessiondesktop)
     appNewVersion=$(versionFromGit session-foundation session-desktop)
     expectedTeamID="SUQ8J2PCT7"
     ;;
-shield)
+setapp)
+    name="Setapp"
+    appName="Setapp.app"
+    type="zip"
+    downloadURL="https://go.setapp.com/download/client"
+    expectedTeamID="MEHY5QF425"
+    ;;shield)
     # credit: Søren Theilgaard (@theilgaard)
     name="Shield"
     type="zip"
@@ -11482,6 +11547,14 @@ tigervnc)
     appNewVersion=$(curl -fsL "https://api.github.com/repos/TigerVNC/tigervnc/releases/latest" | awk -F'"' '/"tag_name"/{print $4}' | sed 's/^v//')
     downloadURL="https://downloads.sourceforge.net/project/tigervnc/stable/${appNewVersion}/TigerVNC-${appNewVersion}.dmg"
     expectedTeamID="S5LX88A9BW"
+    ;;
+timelymemory)
+    name="Memory"
+    type="zip"
+    archiveName="memory.app.zip"
+    downloadURL="https://memory.timelyapp.com/download/mac"
+    appNewVersion="$(curl -fsIL ${downloadURL} | grep -i ^location | cut -d "/" -f6)"
+    expectedTeamID="NGR7G7F269"
     ;;
 todoist)
     name="Todoist"
