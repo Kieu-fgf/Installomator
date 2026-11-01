@@ -33,6 +33,7 @@ aftermath
 aircall
 airflow
 airserver
+airstats
 airtable
 airtame
 airtamepkg
@@ -42,6 +43,7 @@ alfred
 altserver
 alttab
 amadeuspro2
+amadeuspro3
 amazonchime
 amazoncorretto11jdk
 amazoncorretto17jdk
@@ -49,9 +51,11 @@ amazoncorretto21jdk
 amazoncorretto22jdk
 amazoncorretto23jdk
 amazoncorretto25jdk
+amazoncorretto27jdk
 amazoncorretto8jdk
 amazonq
 amazonquick
+amazonredshiftodbcdriver
 amazonworkspaces
 anaconda
 anastasiysextensionmanager
@@ -61,12 +65,14 @@ ankerwork
 anki
 anotherredisdesktopmanager
 antconc
+antigravity
 anydesk
 apachedirectorystudio
 apachenetbeans
 ape
 apparency
 appautopatch
+appautopatch4
 appcleaner
 applenyfonts
 appleprovideoformats
@@ -113,7 +119,6 @@ backgrounds
 balenaetcher
 balsamiqwireframes
 bambustudio
-bartender
 basecamp3
 basecamp5
 baseline
@@ -140,7 +145,11 @@ blackhole64ch
 blackmagicatemswitchers
 blackmagiccameras
 blackmagicconverters
+blackmagicdavinciresolvestudio
+blackmagicdesktopvideo
 blackmagicultimatte
+blackmagicvideohub
+blackmagicwebpresenter
 blender
 blitzit
 boop
@@ -152,6 +161,7 @@ brave
 bravepkg
 brosix
 browserosaurus
+browserstacklocal
 bruno
 bugdom
 burpsuitecommunityedition
@@ -159,6 +169,7 @@ burpsuiteprofessional
 busycal
 busycontacts
 buttercup
+buzz
 caffeine
 cakebrew
 calcservice
@@ -178,12 +189,16 @@ camtasia2026
 camunda
 canva
 capcut
+captureone
+captureonepro
 carboncopycloner
 cardpresso
 catoclient
 charles
+chatgpt
 chatgptclassic
 chatwork
+checkpointsase
 chemdoodle
 chemdoodle2d
 chemdoodle3d
@@ -240,6 +255,7 @@ clickshare
 clickup
 clipgrab
 clipy
+clop
 closeio
 cloudflarewarp
 cloudtalk
@@ -252,12 +268,14 @@ coconutbattery
 code42
 codemeter
 coderunner
+codex
 colourcontrastanalyser
 conductor
 connectfonts
 container
 containermanager
 cormorant
+cortexcode
 coteditor
 craftmanagerforsketch
 crashplan
@@ -283,11 +301,17 @@ dbeaverce
 dbeaverteam
 dbgate
 dbvisualizer
+dcp-o-matic
+dcp-o-matic2
+dcpomatic
+dcpomatic2
 debookee
+decimatorucp
 dedoose
 deepl
 deezer
 defaultfolderx
+deon
 deon-cloud
 deon-onprem
 depnotify
@@ -335,6 +359,8 @@ eastwestinstallationcenter
 eastwestopus
 eastwestplay
 easyfind
+eclipseideforcppdevelopers
+eclipseideforenterprisejavaandwebdevelopers
 eclipseideforjavadevelopers
 eclipsetemurin11
 eclipsetemurin17
@@ -361,7 +387,6 @@ epicgameslauncher
 eposconnect
 epsonprintlayout
 escrowbuddy
-eshareosx
 espanso
 etrecheck
 etssecurebrowser
@@ -378,9 +403,11 @@ extensisconnect
 facebookmessenger
 fantastical
 fastscripts
+fathom
 favro
 fellow
 ffmpegmartinriedl
+ffprobemartinriedl
 fiddlereverywhere
 fierycommandworkstation
 figma
@@ -388,6 +415,7 @@ filemakerpro
 filemakerpro20
 filemakerpro21
 filemakerpro22
+filemakerpro26
 filmlab
 finalcutprocontent
 finaldraft11
@@ -415,8 +443,10 @@ focusritecontrol2
 fontagent10
 fontbase
 fontexplorer
+forel
 fork
 foxitpdfeditor
+foxitpdfreader
 franz
 freeplane
 front
@@ -431,6 +461,7 @@ gather2
 gathertown
 gdevelop
 geneiousprime
+gentilhomme
 gephi
 gfxcardstatus
 ghostty
@@ -484,6 +515,7 @@ gyazogif
 hancock
 handbrake
 handy
+harmonysase
 harper
 hazel
 headlamp
@@ -496,6 +528,7 @@ hoppscotch
 horos
 hot
 houdahspot
+hpclick
 hpeasyadmin
 hpeasystart
 hubstaff
@@ -516,6 +549,7 @@ idrivethin
 igv
 iina
 ikproductmanager
+ilok
 imageoptim
 imazing3
 imazingprofileeditor
@@ -541,9 +575,10 @@ ipswupdater
 ipvisionconnect
 iriunwebcam
 isadora
-island
+isixdicomviewer
 istatmenus
 iterm2
+itspaint
 itsycal
 izotopeproductportal
 jabradirect
@@ -618,6 +653,7 @@ kommodoscreenrecorder
 korgsoftwarepass
 krisp
 krita
+labchartreader8
 lastpass
 lastpassdesktop
 latexit
@@ -656,6 +692,7 @@ loupedeck
 lovable
 lowprofile
 lsagent
+ltspice
 lucidlink
 lucifer
 lulu
@@ -667,7 +704,12 @@ macfuse
 macoslaps
 macpass
 macports
+macshot
+mactex
+mactexbasic
+mactexfull
 mactracker
+macusb
 macvector
 magicbullet
 magnolia
@@ -742,6 +784,7 @@ microsoftteamsnew
 microsoftteamsreset
 microsoftvisualstudiocode
 microsoftwindowsapp
+microsoftwindowsappbeta
 microsoftword
 microsoftwordreset
 midimonitor
@@ -752,6 +795,7 @@ miniconda
 minisim
 miro
 missive
+missiveapp
 mist
 mist-cli
 mixxx
@@ -769,6 +813,7 @@ mochatn3812
 mochatn5250
 mockoon
 moderncsv
+mole
 mongodbcompass
 monitorcontrol
 monotypeconnect
@@ -790,6 +835,7 @@ nanosaur
 nativeaccess
 nditools
 nessusagent
+netbird
 netiquette
 netnewswire
 netspot
@@ -836,7 +882,6 @@ omniplan3
 omniplan4
 omnipresence
 omnissahorizonclient
-omnissahorizonclient
 onionshare
 onlyofficedesktop
 onscreencontrol
@@ -848,17 +893,21 @@ openlens
 openrefine
 openvpnconnect
 openvpnconnectv3
+openworkenterprise
 opera
+oraclesqldeveloper
 orbstack
 orcaslicer
 origin
 orion
 orkadesktop
 osquery
+otter
 ottomatic
 outputarcade
 outputhub
 outset
+outsystemsservicestudio
 overflow
 overlord
 owncloud
@@ -875,6 +924,7 @@ patchomator
 pcoipclient
 pdfexpert
 pdfsam
+perimeter81
 pgadmin4
 phoenixcode
 pika
@@ -891,6 +941,7 @@ podmandesktop
 podmandesktopairgap
 polleverywhere
 polylens
+pop
 popsql
 portingkit
 postgresapp
@@ -913,6 +964,7 @@ promiseutilityr
 proofpointautoupdater
 propresenter7
 protondrive
+protonmail
 protonpass
 protonvpn
 proxyman
@@ -926,9 +978,12 @@ python
 qgis-pr
 qgisltr
 qlab
+qualified
+quarto
 quickbooksonline
 r
 radiosilence
+radix
 raindropio
 rancherdesktop
 rapidapi
@@ -936,8 +991,8 @@ rawtherapee
 raycast
 realvncondemandassist
 realvncserver
-realvncviewer
 reaper
+recordist
 rectangle
 redcanarymacmonitor
 redgiant
@@ -953,6 +1008,7 @@ remotixagent
 renew
 renew-noagent
 resiliosynchome
+resolumearena
 retrobatch
 rhino7
 rhino8
@@ -972,7 +1028,9 @@ rogueamoebaaudiohijack4
 rogueamoebafission2
 rogueamoebaloopback2
 rogueamoebasoundsource5
+rokokostudio
 rokokostudiopreview
+rolle
 royaltsx
 rstudio
 rustdesk
@@ -1005,7 +1063,7 @@ sidekick
 sigil
 signal
 signiantapp
-silentknight
+silentknight3
 silnite
 sipgateclinq
 sirimote
@@ -1033,6 +1091,7 @@ snagit2025
 snagit2026
 snapgene
 snapgeneviewer
+snowflakecoco
 snowflakeodbc
 soapuiopensource
 sococo
@@ -1054,6 +1113,7 @@ splashtopsos
 splashtopstreamer
 splice
 spotify
+sqldeveloper
 sqlitebrowser
 sqlpropostgres
 sqlprostudio
@@ -1062,6 +1122,7 @@ stackfield
 starface10x
 starface90x
 starface91x
+stats
 stats
 steelseriesengine
 steinbergactivationmanager
@@ -1073,6 +1134,7 @@ subethaedit
 sublimemerge
 sublimetext
 suitestudio
+sunsama
 supercollider
 superhuman
 superwhisper
@@ -1080,12 +1142,16 @@ supportapp
 surfdrive
 suspiciouspackage
 swiftdialog
+swiftpkgcli
+swiftpkgcombined
 swiftruntimeforcommandlinetools
 symantecvipaccess
 symhelper
 sync
 synergybaseball
 synergybasketball
+synergyeditor
+synergyeditorbasketball
 synergyvideoexpress
 synologyactivebackupforbusinessagent
 synologyactiveprotectagent
@@ -1115,11 +1181,15 @@ telegram
 tembo
 tencentmeeting
 termius
+tesseraremote
+testnav
 texliveutility
 texshop
 texshop-alternative
 textexpander
 textmate
+textream
+thaw
 theunarchiver
 things
 thinlincclient
@@ -1207,7 +1277,9 @@ vlc
 vmwarefusion
 vmwarehorizonclient
 vncconnect
+vocevistavideopro
 vonagebusiness
+vorssaint
 vpntracker365
 vscodium
 vuescanintel
@@ -1259,6 +1331,7 @@ yubikeymanager
 yubikeymanagerqt
 zappy
 zbrush2025
+zbrush2026
 zed
 zen
 zenbrowser
